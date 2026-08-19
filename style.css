@@ -170,21 +170,36 @@ footer { margin-top: 50px; font-size: 13px; }
 }
 
 
-/* レビュー一覧。表示順は review-order.js が data-order で制御します。 */
-.review-list {
+/* カテゴリページ内に直接蓄積するレビュー */
+.reviews {
+  max-width: 900px;
+}
+.review-entry {
+  margin: 0 0 28px;
+}
+.review-entry h2 {
+  margin: 0 0 8px;
+  font-size: 25px;
+}
+.review-entry h3 {
+  margin: 22px 0 8px;
+  font-size: 18px;
+}
+.review-entry ul {
+  margin-top: 6px;
+}
+.review-entry img {
   display: block;
+  max-width: min(100%, 760px);
+  height: auto;
+  margin: 18px 0;
 }
-
-.review-item {
-  padding: 10px 0 16px;
-  border-bottom: 1px dotted #999;
+.review-meta {
+  margin: 0 0 16px;
+  font-size: 14px;
 }
-
-.review-item h3 {
-  margin: 0 0 6px;
-  font-size: 1.08rem;
-}
-
-.review-item p {
-  margin: 0;
+.review-separator {
+  border: 0;
+  border-top: 1px dotted #999;
+  margin: 30px 0;
 }
