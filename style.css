@@ -1,0 +1,190 @@
+:root {
+  --menu-bg: #ececff;
+  --paper: rgba(255,255,255,.62);
+  --text: #111;
+  --line: #8b8b8b;
+  --link: #0000ee;
+  --visited: #551a8b;
+  --mint: rgba(111, 223, 173, .24);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  color: var(--text);
+  background: #fff;
+  font-family: "Times New Roman", "Yu Mincho", "MS PMincho", serif;
+  line-height: 1.6;
+}
+
+a { color: var(--link); text-decoration: underline; }
+a:visited { color: var(--visited); }
+
+.bg-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(400px, 1fr));
+  grid-auto-rows: 230px;
+  pointer-events: none;
+  user-select: none;
+}
+.bg-pattern span {
+  align-self: center;
+  justify-self: center;
+  color: var(--mint);
+  font-family: "Times New Roman", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(46px, 3.6vw, 64px);
+  white-space: nowrap;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+}
+
+.sidebar {
+  min-height: 100vh;
+  padding: 40px 22px;
+  background: var(--menu-bg);
+  border-right: 3px double #777;
+}
+.site-name {
+  margin: 0 0 28px;
+  font-size: 27px;
+  line-height: 1.05;
+  font-weight: bold;
+}
+.menu-title {
+  margin-bottom: 14px;
+  font-size: 17px;
+  font-weight: bold;
+}
+nav ul { margin: 0; padding: 0; list-style: none; }
+nav li { margin: 18px 0; }
+nav li::before {
+  content: "●";
+  display: inline-block;
+  width: 20px;
+  font-size: 13px;
+  color: #12d613;
+}
+nav li:nth-child(1)::before { color: #ffc6cf; }
+nav li:nth-child(2)::before { color: #10df18; }
+nav li:nth-child(3)::before { color: #2de3e6; }
+nav li:nth-child(4)::before { color: #1595ff; }
+nav li:nth-child(5)::before { color: #0000ee; }
+nav li:nth-child(6)::before { color: #3f3a9c; }
+nav li:nth-child(7)::before { color: #bf10c6; }
+nav li:nth-child(8)::before { color: #ef8b17; }
+nav li:nth-child(9)::before { color: #777; }
+
+.content {
+  min-width: 0;
+  padding: 38px 42px 70px;
+  background: var(--paper);
+}
+.page-title {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: clamp(30px, 3vw, 48px);
+  line-height: 1.15;
+}
+.lead {
+  max-width: 850px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+.rule { border: 0; border-top: 1px solid #999; margin: 28px 0; }
+.section { margin: 30px 0; }
+.section h2 {
+  margin: 0 0 16px;
+  font-size: 23px;
+}
+.section h2::before { content: "・"; }
+
+.setup-list { max-width: 760px; margin: 0 auto; }
+.setup-list > div {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  padding: 6px 0;
+}
+.setup-list dt { font-weight: bold; }
+.setup-list dd { margin: 0; }
+
+.favorite-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.favorite-items li {
+  margin: 0 0 4px;
+}
+.favorite-items li:last-child {
+  margin-bottom: 0;
+}
+
+.review-list { margin: 0; padding-left: 22px; }
+.review-list li { margin: 14px 0 24px; }
+.meta { margin: 3px 0; font-size: 14px; }
+.empty { color: #555; }
+
+.review-box { max-width: 880px; }
+.review-box img { max-width: 100%; height: auto; border: 0; }
+.review-box h2 { margin-top: 30px; }
+.review-data { border-collapse: collapse; margin: 15px 0 25px; }
+.review-data th, .review-data td { padding: 4px 18px 4px 0; text-align: left; vertical-align: top; }
+
+footer { margin-top: 50px; font-size: 13px; }
+
+@media (max-width: 800px) {
+  .bg-pattern {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    grid-auto-rows: 180px;
+  }
+  .bg-pattern span { font-size: 42px; }
+  .site-shell { grid-template-columns: 1fr; }
+  .sidebar {
+    min-height: auto;
+    padding: 18px 16px;
+    border-right: 0;
+    border-bottom: 3px double #777;
+  }
+  .site-name { margin-bottom: 12px; }
+  .menu-title { margin-bottom: 8px; }
+  nav ul { display: flex; flex-wrap: wrap; gap: 7px 14px; }
+  nav li { margin: 0; }
+  nav li::before { width: 16px; }
+  .content { padding: 26px 18px 50px; }
+  .page-title { text-align: left; font-size: 31px; }
+  .lead { text-align: left; margin-left: 0; }
+  .setup-list { margin: 0; }
+  .setup-list > div { grid-template-columns: 1fr; gap: 0; padding: 8px 0; }
+}
+
+
+/* レビュー一覧。表示順は review-order.js が data-order で制御します。 */
+.review-list {
+  display: block;
+}
+
+.review-item {
+  padding: 10px 0 16px;
+  border-bottom: 1px dotted #999;
+}
+
+.review-item h3 {
+  margin: 0 0 6px;
+  font-size: 1.08rem;
+}
+
+.review-item p {
+  margin: 0;
+}
